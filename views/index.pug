@@ -1,0 +1,15 @@
+html
+    head
+        title= title
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
+    body
+        .container 
+            input(type="text" placeholder="News Titlte" id="title")
+            input(type="text" placeholder="News Content" id="description")
+            button(id="btn_submit") Add news
+            each item in news
+                .item 
+                    p= `${item.id_new} -- ${item.title}`                
+                    span(class="delete new-icon" id=item.id_new) delete
+
+    script(src="functions.js") 
