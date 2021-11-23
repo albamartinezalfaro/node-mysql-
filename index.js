@@ -20,10 +20,9 @@ app.use(express.static('./css'));
 
 app.get('/', function(req, res){
     //res.send('initialized app');
-    all = getNew();
-    console.log('alba',all);
-    console.log('alba',getNew());
-    res.render('index.pug', {title: 'News', news:all});
+    getNew(function(all){
+        res.render('index.pug', {title: 'News', news:all});        
+    });
 });
 
 app.get('/add/:title/:description', function(req, res){

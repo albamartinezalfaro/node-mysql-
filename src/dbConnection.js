@@ -25,20 +25,19 @@ const addNew = (title, description) => {
     });
 }
 
-const getNew = () => {
+const getNew = (callback) => {
     const sql = 'SELECT * FROM news';
     //return new Promise((resolve, reject) => {
     //    mySQLConnection.query(sql, (err, res) => (err ? reject(err) : resolve(res)));
     //});
    
-   // mySQLConnection.query(sql, function(err, result, field){
+    // mySQLConnection.query(sql, function(err, result, field){
     //    //console.log('pepe',result[0])
-     //       return result[0];
+    //       return result[0];
     //});
 
     mySQLConnection.query(sql, (err, rows) => {
-        //console.log('pepe',rows);
-        return rows;
+        callback(rows);
     });
 }
 
@@ -47,4 +46,9 @@ const deleteNews = id => {
     mySQLConnection.query(sql);
 }
 
-export {connecting, addNew, getNew, deleteNews};
+const updateNews = id => {
+    const sql = `UPDATE news SET title=${title} WHERE id_new=${id}`;
+    mySQLConnection.query(sql);
+}
+
+export {connecting, addNew, getNew, deleteNews, updateNews};
